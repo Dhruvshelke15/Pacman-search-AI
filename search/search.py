@@ -103,7 +103,7 @@ def depthFirstSearch(problem: SearchProblem):
 
             for successor, action, stepCost in problem.getSuccessors(node):
                 fringe.push((successor, actions + [action]))
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 def breadthFirstSearch(problem: SearchProblem):
     """Search the shallowest nodes in the search tree first."""
@@ -123,7 +123,7 @@ def breadthFirstSearch(problem: SearchProblem):
 
             for successor, action, stepCost in problem.getSuccessors(node):
                 fringe.push((successor, actions + [action]))
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
@@ -145,7 +145,7 @@ def uniformCostSearch(problem: SearchProblem):
                 new_actions = actions + [action]
                 new_cost = cost + stepCost
                 fringe.push((successor, new_actions, new_cost), new_cost)
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 def nullHeuristic(state, problem=None):
     """
@@ -178,7 +178,7 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
                 new_cost = cost + stepCost
                 priority = new_cost + heuristic(successor, problem)
                 fringe.push((successor, new_actions, new_cost), priority)
-    util.raiseNotDefined()
+    # util.raiseNotDefined()
 
 
 # Abbreviations
