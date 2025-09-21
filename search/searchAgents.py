@@ -500,7 +500,37 @@ def foodHeuristic(state: Tuple[Tuple, List[List]], problem: FoodSearchProblem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    return 0
+    foodList = foodGrid.asList()
+
+    if not foodList:
+        return 0
+
+    ## Improved cost implementation
+    # Find Manhattan distance closest to food dot
+    min_dist_to_food = float('inf')
+    for food_pos in foodList:
+        dist = util.manhattanDistance(position, food_pos)
+        if dist < min_dist_to_food:
+            min_dist_to_food = dist
+    
+    # Now find max Manhattan distance between any 2 food dots
+    max_dist_between_food = 0
+    for food1 in foodList:
+        for food2 in foodList:
+            dist = util.manhattanDistance(food1, food2)
+            if dist > max_dist_between_food:
+                max_dist_between_food = dist
+            
+    # Now return sum of both distances i.e. Heuristic
+    return min_dist_to_food + max_dist_between_food
+
+    # max_dist = 0
+    # for food_pos in foodList:
+    #     dist = util.manhattanDistance(position, food_pos)
+    #     if dist > max_dist:
+    #         max_dist = dist
+
+    # return max_dist
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
