@@ -339,15 +339,12 @@ class CornersProblem(search.SearchProblem):
             if not hitsWall:
                 next_pos = (nextx, nexty)
                 
-                # Create a mutable list from the visited_corners tuple
                 next_visited_list = list(visited_corners)
 
-                # Check if the new position is one of the corners
                 for i, corner in enumerate(self.corners):
                     if next_pos == corner:
                         next_visited_list[i] = True
                 
-                # Convert back to an immutable tuple for the new state
                 next_visited_corners = tuple(next_visited_list)
 
                 successor_state = (next_pos, next_visited_corners)
@@ -390,17 +387,14 @@ def cornersHeuristic(state: Any, problem: CornersProblem):
     position, visited_corners = state
     unvisited_corners = []
 
-    # Find all the corners that haven't been visited yet
     for i in range(len(corners)):
         if not visited_corners[i]:
             unvisited_corners.append(corners[i])
 
-    # If all corners have been visited, we are at the goal
     if not unvisited_corners:
         return 0
 
     max_dist = 0
-    # Find the maximum Manhattan distance to any of the unvisited corners
     for corner in unvisited_corners:
         dist = util.manhattanDistance(position, corner)
         if dist > max_dist:

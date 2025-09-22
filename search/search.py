@@ -129,7 +129,7 @@ def uniformCostSearch(problem: SearchProblem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
     fringe = util.PriorityQueue()
-    fringe.push((problem.getStartState(), [], 0), 0) # (node, actions, cost), priority
+    fringe.push((problem.getStartState(), [], 0), 0)
     visited = set()
 
     while not fringe.isEmpty():
@@ -158,8 +158,6 @@ def aStarSearch(problem: SearchProblem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
     fringe = util.PriorityQueue()
-    # The item in the fringe is (state, actions, cost).
-    # The priority is cost + heuristic.
     start_state = problem.getStartState()
     fringe.push((start_state, [], 0), heuristic(start_state, problem))
     visited = set()
